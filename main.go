@@ -87,9 +87,6 @@ func main() {
 	    return nil
 	})
 	fmt.Printf("Files: %v\n", files)
-	if err != nil {
-		githubactions.Fatalf(fmt.Sprintf("Invalid filename pattern: %v", err))
-	}
 	if len(files) == 0 {
 		githubactions.Fatalf(fmt.Sprintf("No file found! pattern: %s", filename))
 	}
