@@ -79,7 +79,13 @@ func main() {
 	if filename == "" {
 		missingInput(filenameInput)
 	}
-	files, err := filepath.Glob(filename)
+	files := []string{}
+	filepath.Walk(filename, func(path string, info os.FileInfo, err error) error {
+	    if !info.IsDir() && filepath.Ext(path) == ".md" {
+		files = append(files, path)
+	    }
+	    return nil
+	})
 	fmt.Printf("Files: %v\n", files)
 	if err != nil {
 		githubactions.Fatalf(fmt.Sprintf("Invalid filename pattern: %v", err))
