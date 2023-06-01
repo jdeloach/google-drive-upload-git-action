@@ -81,7 +81,7 @@ func main() {
 	}
 	files := []string{}
 	filepath.Walk(filename, func(path string, info os.FileInfo, err error) error {
-	    if !info.IsDir() && filepath.Ext(path) == ".md" {
+	    if !info.IsDir() && filepath.Ext(path) == ".docx" {
 		files = append(files, path)
 	    }
 	    return nil
